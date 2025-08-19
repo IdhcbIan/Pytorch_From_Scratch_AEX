@@ -1,0 +1,54 @@
+% █▀█ █▀█ █▀▀ ▄▀█ █▀▄▀█ █▄▄ █   █▀▀
+% █▀▀ █▀▄ ██▄ █▀█ █ ▀ █ █▄█ █▄▄ ██▄
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                      CORE SETUP                      
+%                Document-Wide Settings                
+%......................................................
+\usepackage[utf8]{inputenc}	         % Input encoding: Assumes UTF-8 text editor
+\usepackage[T1]{fontenc}             % Output enconding: 8-bit, for better glyph support
+\usepackage[margin=2.5cm]{geometry}  % Set page margins
+\usepackage[brazil]{babel}           % Language-specific settings
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                       GRAPHICS                       
+%                Generate/Import Images                 
+%......................................................
+%% NATIVE PROGRAMMATIC DIAGRAMS & PLOTS
+%\usepackage{tikz}		        % Create vector graphics programmatically
+%\usetikzlibrary{arrows.meta}	% Additional arrow styles
+%\usepackage{pgfplots}		    % Tool for creating function plots and charts
+%\pgfplotsset{compat=1.18}	    % Enforce version 1.18 for consistency
+
+% EXTERNAL IMAGE MANAGEMENT
+\usepackage{graphicx}		    % LaTeX standard for including external image files
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                    MATH PACKAGES                     
+%......................................................
+% AMS (American Mathematical Society)
+\usepackage{amssymb} 	% AMS's package for mathematical symbols
+\usepackage{amsmath}	% AMS's package for mathematical typesetting
+\usepackage{mathtools}  % Extends amsmath's functionalities (i.e.: a superset)
+\usepackage{amsthm}    	% AMS's package for creating theorem-like environments
+
+
+% LOADED LAST TO AVOID DEPENDENCY ERRORS
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                     BIBLIOGRAPHY                      
+%                   Manage References                   
+%......................................................
+\usepackage[
+	backend=biber,	% Use Biber backend (more powerful than BibTex)
+	style=ieee,     %
+	sorting=nyt     % 'nyt' stands for name, year, title
+]{biblatex}
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                     FINALIZATION                      
+%    Packages That Patch Others. MUST BE LOADED LAST    
+%......................................................
+\usepackage{hyperref}	% Add hyperlinks to references, ToC and URLs
+\hypersetup{
+	colorlinks=true,	% true: colored links; false: boxed links
+	allcolors=NavyBlue,	% Set all link types to a single color
+}
