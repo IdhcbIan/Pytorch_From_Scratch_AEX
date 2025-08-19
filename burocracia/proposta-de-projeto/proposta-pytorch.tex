@@ -13,100 +13,117 @@
 \begin{document}
     % --- TITLE BLOCK ---
     \input{./titulo.tex}
-    
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.6\textwidth]{imagem-de-capa.png}
-    \end{figure}
-    
     \newpage
     
     % --- ARTICLE BODY ---
     \section*{Proposta da AEX}
     
-    \section*{Aulas}
+    \subsection*{Aulas}
+    \subsubsection*{Bloco 1 -- IA do Zero}
     \begin{itemize}
-        \section*{Bloco 1 - IA do Zero}
-        \item Video 1 - Introducao e Revisao
+        \item Vídeo 1 -- Introdução e Revisão
         \begin{itemize}
-            \item Introducao ao curso
-            \item Machine Learning, introducao ao problema do pipeline, complexidade, informacao. 
-            \item Enviorment, bibliotecas, colab. Configurando maquina.
+            \item Introdução ao curso;
+            \item Machine Learning, introdução ao problema do pipeline, complexidade, informação;
+            \item Environment, bibliotecas, colab. Configurando máquina.
         \end{itemize}
     
-        \item Aula 2 - Revisao de Conceitos Nessesarios.
+        \item Vídeo 2 -- Revisão de Conceitos Necessários
         \begin{itemize}
-            \item Revisao Matematica, Funcoes (Rn em Rn) Derivadas Parciais, Gradiente. 
-            \item Parte 1: Gradientes e Backprop. 
+            \item Revisão Matemática: funções ($\mathbb{R}^n$ em $\mathbb{R}^n$), derivadas parciais, gradiente;
+            \item Parte 1: Gradientes e Backprop.
         \end{itemize}
             
-        \item Aula 3 - Torch Autograd Sistem do zero.
+        \item Vídeo 3 -- \emph{PyTorch Autograd} do zero
             \begin{itemize}
-                \item Parte 2: Model class, exemplo seno, primeiro MLP, e levando conceitos a Torch, torch optim. 
-                \item Parte 3: O que eh uma GPU, activation functions, Revisao conceitos. 
+                \item Parte 2: Model class, exemplo seno, primeiro MLP, e levando conceitos a Torch, torch optim;
+                \item Parte 3: O que eh uma GPU, activation functions, revisão conceitos.
             \end{itemize} 
-        
-        
-        \section*{Bloco 2 - Arquitetuas de NN}
-        \item Video 4 - Introducao as Arquiteturas de NN.
+    \end{itemize}
+    
+    \subsubsection*{Bloco 2 -- Arquiteturas de Redes Neurais}
+    \begin{itemize}
+        \item Vídeo 4 -- Introdução às Arquiteturas de Redes Neurais
         \begin{itemize}
-            \item Torch NN.module e resolvendo MNIST (CPU, GPU). 
-            \item Problemas comuns Parte 1: Overfitting, Exploding Gradients, Vanishing Gradients
-            \item Problemas comuns Parte 2: Layer Normalization, Batch Normalization, Shuffle correspondance.
+            \item Torch \verb|NN.module| e resolvendo MNIST (CPU, GPU);
+            \item Problemas comuns -- Parte 1: \emph{Over-fitting}, \emph{exploding gradients} e \emph{vanishing gradients};
+            \item Problemas comuns -- Parte 2: Layer Normalization, Batch Normalization, Shuffle correspondence.
         \end{itemize}
         
-        
-        \item Video 5 - Mais Arquiteturas de NN e Pratica.
+        \item Vídeo 5 -- Mais Arquiteturas de Redes Neurais e Prática
         \begin{itemize}
-            \item CNNs.
+            \item CNNs;
             \item RNN.
         \end{itemize}
         
-        \item Video 6 - Pratica.
+        \item Vídeo 6 -- Prática.
         \begin{itemize}
-            \item Pratica. Kaggle to Solved NN.
+            \item Prática. \emph{Kaggle to Solved NN}.
         \end{itemize}
+    \end{itemize}
     
-        \section*{Bloco 3 - Dados e Praticas de Producao}
-        
-        
-        \item Video 7 - Embeddings e Tranfer Learning.
+    \subsubsection*{Bloco 3 -- Dados e Práticas de Produção}
+    \begin{itemize}
+        \item Vídeo 7 -- \emph{Embeddings} e \emph{Transfer Learning}.
         \begin{itemize}
-            \item Embeddings
-            \item Modelos Pre-Treinados. (LLMs, TTS, STT, Stable Difuision)
-            \item Pontos Importantes de modelos grandes em GPU.
-            \item Tranfer-Learning
-            \item Finetuning
+            \item \emph{Embeddings}
+            \item Modelos Pré-Treinados (LLMs, TTS, STT, Stable Diffusion);
+            \item Pontos importantes de modelos grandes em GPU;
+            \item \emph{Transfer-learning};
+            \item \emph{Fine tunning}.
         \end{itemize}
         
         
-        \item Video 8 - Dados: Extracao, Contaminacao, Criacao. (ChemAI)
+        \item Vídeo 8 -- Dados: Extração, Contaminação, Criação (ChemAI)
     
         
-        \item Video 9 - Infra-Estrutura para IA.
+        \item Vídeo 9 -- Infra-estrutura para IA
         
-        \item Video 10 - Colocando IA em Producao.
-    
+        \item Vídeo 10 -- Colocando IA em produção
     \end{itemize}
     
         
     \section*{Material}
     \begin{itemize}
-        \item Bloco 1 \\ Andrej Karpathy - zero to hero(2 Primeiros videos)\cite{karpathy}\\ https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ
+        \item Bloco 1:
+        \begin{itemize}
+            \item Andrej Karpathy -- Neural Networks: Zero to Hero \cite{karpathy} (vídeos 1-2).
+        \end{itemize}
         
-        \item Bloco 2 \\ MIT - AI course\cite{mit_ai} \\ MIT 6.S191: Introduction to Deep Learning\cite{mit_deep_learning}
+        \item Bloco 2:
+        \begin{itemize}
+            \item MIT 6.034: Artificial Intelligence \cite{mit_ai};
+            \item MIT 6.S191: Introduction to Deep Learning \cite{mit_deep_learning}.
+        \end{itemize}
         
-        \item Bloco 3 \\ Praticas de AI, Material Proprio \\ AI-Chem, Zero to hero aulas 3-5.
+        \item Bloco 3:
+        \begin{itemize}
+            \item AI-Chem (material próprio);
+            \item Andrej Karpathy -- Neural Networks: Zero to Hero \cite{karpathy} (vídeos 3-5);
+            \item MIT 6.S191: Introduction to Deep Learning \cite{mit_deep_learning}.
+        \end{itemize}
     
     \end{itemize}    
     
-    \section*{Horas - AEX}
-    
-    Tempo de preparar as Material: 5h por aula.\\
-    Tempo de preparar as Video: 4h por aula.\\
-    Tempo de aula: 30-45min por aula.\\
-    \textbf{Total de aulas: 10 Videos. 20 Semanas.}\\
-    Total = 10 * 0.8 + 10 * (5h Para Preparar Material) + 10 * (4h Para Preparar Video) = 98 Horas total.
+    \section*{Horas -- AEX}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{cc}
+            \toprule
+            \textbf{Atividade} & \textbf{Tempo (horas/aula/discente)} \\
+            \midrule
+            Preparo de material didático & $4$ \\
+            Gravação de vídeo-aula & $1$ \\
+            Edição de vídeo-aula & $3$ \\
+            Atendimento síncrono & $2$ \\
+            \bottomrule
+        \end{tabular}
+        \caption{}
+        \label{tbl:horas-de-extensao}
+    \end{table}
+    \textbf{Total de vídeo-aulas: 10}
+
+    \textbf{Total de horas}: $10\times(4\,\text{h} + 1\,\text{h} + 3\,\text{h} + 2\,\text{h}) = \boldsymbol{100}$ \textbf{horas/discente}.
     
     % --- BIBLIOGRAPHY ---
     \printbibliography

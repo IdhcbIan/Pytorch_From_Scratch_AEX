@@ -1,54 +1,118 @@
 % █▀█ █▀█ █▀▀ ▄▀█ █▀▄▀█ █▄▄ █   █▀▀
 % █▀▀ █▀▄ ██▄ █▀█ █ ▀ █ █▄█ █▄▄ ██▄
-%::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                      CORE SETUP                      
-%                Document-Wide Settings                
-%......................................................
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                   CORE SETUP                                   
+%                             Document-Wide Settings                             
+%................................................................................
 \usepackage[utf8]{inputenc}	         % Input encoding: Assumes UTF-8 text editor
 \usepackage[T1]{fontenc}             % Output enconding: 8-bit, for better glyph support
 \usepackage[margin=2.5cm]{geometry}  % Set page margins
 \usepackage[brazil]{babel}           % Language-specific settings
+\usepackage{csquotes}                % Context-sensitive quoting
+                                     % 'csquotes' works in tandem with babel
+                                     % 'csquotes' IS A 'biblatex' DEPENDENCY
 
-%::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                       GRAPHICS                       
-%                Generate/Import Images                 
-%......................................................
-%% NATIVE PROGRAMMATIC DIAGRAMS & PLOTS
-%\usepackage{tikz}		        % Create vector graphics programmatically
-%\usetikzlibrary{arrows.meta}	% Additional arrow styles
-%\usepackage{pgfplots}		    % Tool for creating function plots and charts
-%\pgfplotsset{compat=1.18}	    % Enforce version 1.18 for consistency
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                    STYLING                                     
+%                        Alter Visual Appearance of Text                         
+%................................................................................
+\usepackage[dvipsnames]{xcolor}  % Access to 68 named colors
+\usepackage{moresize}            % Additional font sizes
+\usepackage{enumerate}           % Customize item style in 'enumerate'
+\usepackage{multicol}            % Environment with multiple columns of text
+\usepackage[normalem]{ulem}      % More underline styles (and aligns bottoms of multiple underlines)
+                                 % 'normalem' prevents underlines from altering \emph
+
+%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                     FLOATS                                     
+%               Manage Floating Content (e.g.: figures and tables)               
+%................................................................................
+\usepackage{subcaption}  % Format multiple images(tables) in one figure(table) environment
+\usepackage{booktabs}    % Format tables following scientific convention
+\usepackage{float}       % Provides [H] 'Here' float placement specifier (use with caution)
+
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                    GRAPHICS                                    
+%                             Generate/Import Images                              
+%.................................................................................
+% NATIVE PROGRAMMATIC DIAGRAMS & PLOTS
+\usepackage{tikz}		% Create vector graphics programmatically
+\usetikzlibrary{arrows.meta}	% Additional arrow styles
+\usepackage{pgfplots}		% Tool for creating function plots and charts
+\pgfplotsset{compat=1.18}	% Enforce version 1.18 for consistency
 
 % EXTERNAL IMAGE MANAGEMENT
-\usepackage{graphicx}		    % LaTeX standard for including external image files
+\usepackage{graphicx}		% LaTeX standard for including external image files
 
-%::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                    MATH PACKAGES                     
-%......................................................
+
+% █▀▄▀█ ▄▀█ ▀█▀ █ █
+% █ ▀ █ █▀█  █  █▀█
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                 MATH PACKAGES                                  
+%.................................................................................
 % AMS (American Mathematical Society)
 \usepackage{amssymb} 	% AMS's package for mathematical symbols
 \usepackage{amsmath}	% AMS's package for mathematical typesetting
 \usepackage{mathtools}  % Extends amsmath's functionalities (i.e.: a superset)
 \usepackage{amsthm}    	% AMS's package for creating theorem-like environments
 
+% NICHE MATH PACKAGES
+\usepackage{xfrac}   % Slanted fractions (\sfrac)
+\usepackage{cancel}  % Strike-through for symbols (\cancel and \cancelto)
+\usepackage{bbm}     % Shorthand solution for blackboard boldfaced 1 (use \mathbbm{1})
+\usepackage[	     % Control over fonts used in \mathbb, \mathcal, \mathfrak & \mathscr
+  scr=boondox,   % 'boondox' is a script font that suports lowercase letters
+  cal=esstix	 % 'esstix' is a calligraphic font that supports lowercase, but not bold letters
+]{mathalpha}
+
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                              CUSTOM MATH COMMANDS                               
+%.................................................................................
+% CONSTANTS
+\newcommand{\e}{\mathscr{e}}		 % Special notation for Euler's number
+
+% RELATIONS
+\newcommand{\longto}{\longrightarrow}    % Alias to note function domain/codomain (f: A --> B)
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+\hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+=}                                       % Compact colon-equals
+\newcommand{\subnormal}{\triangleleft}   % Normal subgroup (left)
+\newcommand{\supnormal}{\triangleright}  % Normal subgroup (right)
+
+% LOGIC
+\newcommand{\limplies}{\rightarrow}      % Conditional connector
+\newcommand{\liff}{\leftrightarrow}      % Biconditional connector
+\newcommand{\nand}{\uparrow}             % NAND connector
+\newcommand{\nor}{\downarrow}		 % NOR connector
+\newcommand{\xor}{\veebar}		 % XOR connector
+
 
 % LOADED LAST TO AVOID DEPENDENCY ERRORS
-%::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                     BIBLIOGRAPHY                      
-%                   Manage References                   
-%......................................................
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                  BIBLIOGRAPHY                                   
+%                                Manage References                                
+%.................................................................................
 \usepackage[
 	backend=biber,	% Use Biber backend (more powerful than BibTex)
-	style=ieee,     %
-	sorting=nyt     % 'nyt' stands for name, year, title
+	style=ieee,	%
+	sorting=nyt	% 'nyt' stands for name, year, title
 ]{biblatex}
 
-%::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                     FINALIZATION                      
-%    Packages That Patch Others. MUST BE LOADED LAST    
-%......................................................
-\usepackage{hyperref}	% Add hyperlinks to references, ToC and URLs
+
+%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%                                  FINALIZATION                                   
+%                 Packages That Patch Others. MUST BE LOADED LAST                 
+%.................................................................................
+\usepackage{hyperref}		% Add hyperlinks to references, ToC and URLs
 \hypersetup{
-	colorlinks=true,	% true: colored links; false: boxed links
+	colorlinks=true,	  % true: colored links; false: boxed links
 	allcolors=NavyBlue,	% Set all link types to a single color
+}
+
+\newcommand{\customref}[2]{%	% Simple alias for custom link text
+	\hyperref[#2]{#1}%
 }
