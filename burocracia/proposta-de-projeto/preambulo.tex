@@ -1,118 +1,123 @@
-% █▀█ █▀█ █▀▀ ▄▀█ █▀▄▀█ █▄▄ █   █▀▀
-% █▀▀ █▀▄ ██▄ █▀█ █ ▀ █ █▄█ █▄▄ ██▄
+%              ▄
+%             ▀ ▀
+% █▀█ █▀█ █▀▀ ▄▀█ █▀▄▀█ █▄▄ █  █ █   █▀▀█
+% █▀▀ █▀▄ ██▄ █▀█ █ ▀ █ █▄█ █▄▄█ █▄▄ █▄▄█
 
 %::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                   CORE SETUP                                   
-%                             Document-Wide Settings                             
+%                            CONFIGURAÇÕES ESSENCIAIS                            
+%                       Afetam o documento em sua íntegra                        
 %................................................................................
-\usepackage[utf8]{inputenc}	         % Input encoding: Assumes UTF-8 text editor
-\usepackage[T1]{fontenc}             % Output enconding: 8-bit, for better glyph support
-\usepackage[margin=2.5cm]{geometry}  % Set page margins
-\usepackage[brazil]{babel}           % Language-specific settings
-\usepackage{csquotes}                % Context-sensitive quoting
-                                     % 'csquotes' works in tandem with babel
-                                     % 'csquotes' IS A 'biblatex' DEPENDENCY
+\usepackage[utf8]{inputenc}		% Codificação de entrada: Padrão UTF-8, pois apoia acentuação
+\usepackage[T1]{fontenc}		% Codificação de saída: Padrão T1 (8-bits), para hifenização e renderização correta de fontes
+\usepackage[margin=2.5cm]{geometry}	% Define as margens da página
+\usepackage[brazil]{babel}		% Para configurações dependentes da lingua
+\usepackage{csquotes}			% Aspas sensíveis ao contexto
+                        		% 'csquotes' trabalha conjuntamente com 'babel'
+                        		% 'csquotes' É UMA DEPENDÊNCIA DO 'biblatex'
 
 
 %::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                    STYLING                                     
-%                        Alter Visual Appearance of Text                         
+%                                  ESTILIZAÇÃO                                   
+%                  Alterações na aparência visual do documento                   
 %................................................................................
-\usepackage[dvipsnames]{xcolor}  % Access to 68 named colors
-\usepackage{moresize}            % Additional font sizes
-\usepackage{enumerate}           % Customize item style in 'enumerate'
-\usepackage{multicol}            % Environment with multiple columns of text
-\usepackage[normalem]{ulem}      % More underline styles (and aligns bottoms of multiple underlines)
-                                 % 'normalem' prevents underlines from altering \emph
+\usepackage[dvipsnames]{xcolor}	% Acesso a 68 cores nomeadas
+\usepackage{moresize}		% Tamanhos de fonte adicionais
+\usepackage{enumerate}		% Customize itens no ambiente 'enumerate'
+\usepackage{multicol}		% Ambiente com multiplas colunas de texto
+\usepackage[normalem]{ulem}	% Mais estilos de sublinhado (alinha sublinhados múltiplos)
+                           	% 'normalem' impede \emph seja sblinhado em vez de itálico
 
 %::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                     FLOATS                                     
-%               Manage Floating Content (e.g.: figures and tables)               
+%                              AMBIENTES FLUTUANTES                              
+%              Gerenciamento de conteúdo como figuras, tabelas, etc...           
 %................................................................................
-\usepackage{subcaption}  % Format multiple images(tables) in one figure(table) environment
-\usepackage{booktabs}    % Format tables following scientific convention
-\usepackage{float}       % Provides [H] 'Here' float placement specifier (use with caution)
+\usepackage{subcaption}	% Formate multiplas imagens(tabulares) em um único ambiente de figura(tabela)
+\usepackage{booktabs}	% Formate tabelas conforme convenção científica
+\usepackage{float}	% Especificador de posição de flutuante [H] 'Here' (use com cautela)
 
 
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                    GRAPHICS                                    
-%                             Generate/Import Images                              
+%                               GRAPHICOS E IMAGENS                               
+%                         Geração e importação de imagens                         
 %.................................................................................
-% NATIVE PROGRAMMATIC DIAGRAMS & PLOTS
-\usepackage{tikz}		% Create vector graphics programmatically
-\usetikzlibrary{arrows.meta}	% Additional arrow styles
-\usepackage{pgfplots}		% Tool for creating function plots and charts
-\pgfplotsset{compat=1.18}	% Enforce version 1.18 for consistency
+% IMAGENS PROGRAMATICAS GERADAS NATIVAMENTE
+\usepackage{tikz}		% Crie gráficos vetorias programaticamente
+\usetikzlibrary{arrows.meta}	% Estilos adicionais de setas para o TikZ
+\usepackage{pgfplots}		% Ferramenta para criação de gráficos
+\pgfplotsset{compat=1.18}	% Enforça a versão 1.18 para consistência
 
-% EXTERNAL IMAGE MANAGEMENT
-\usepackage{graphicx}		% LaTeX standard for including external image files
+% GERENCIAMENTO DE IMAGENS EXTERNAS
+\usepackage{graphicx}		% Padrão LaTeX para inclusão de arquivos de imagen
 
 
-% █▀▄▀█ ▄▀█ ▀█▀ █ █
-% █ ▀ █ █▀█  █  █▀█
+
+%                            ▄
+%                           ▀
+% █▀▄▀█ ▄▀█ ▀█▀ █▀▀ █▀▄▀█ ▄▀█ ▀█▀ █ █▀▀ ▄▀█
+% █ ▀ █ █▀█  █  ██▄ █ ▀ █ █▀█  █  █ █▄▄ █▀█
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                 MATH PACKAGES                                  
+%                             PACOTES DE MATEMÁTICA                              
 %.................................................................................
 % AMS (American Mathematical Society)
-\usepackage{amssymb} 	% AMS's package for mathematical symbols
-\usepackage{amsmath}	% AMS's package for mathematical typesetting
-\usepackage{mathtools}  % Extends amsmath's functionalities (i.e.: a superset)
+\usepackage{amssymb}	% pacote da AMS's para símbolos matemáticos
+\usepackage{amsmath}	% pacote da AMS's para diagramação matemática
+\usepackage{mathtools}  % Extende a funcionalidade de 'amsmath' (i.e.: a superconjunto)
 \usepackage{amsthm}    	% AMS's package for creating theorem-like environments
 
 % NICHE MATH PACKAGES
-\usepackage{xfrac}   % Slanted fractions (\sfrac)
-\usepackage{cancel}  % Strike-through for symbols (\cancel and \cancelto)
-\usepackage{bbm}     % Shorthand solution for blackboard boldfaced 1 (use \mathbbm{1})
-\usepackage[	     % Control over fonts used in \mathbb, \mathcal, \mathfrak & \mathscr
-  scr=boondox,   % 'boondox' is a script font that suports lowercase letters
-  cal=esstix	 % 'esstix' is a calligraphic font that supports lowercase, but not bold letters
+\usepackage{xfrac}	% Frações diagonais (\sfrac)
+\usepackage{cancel}	% Permite "cancelar" (tachar) termos (\cancel e \cancelto)
+\usepackage{bbm}	% Gambiarra para o número 1 em "blackboard bold" (use \mathbbm{1})
+\usepackage[		% Controle sobre as fontes usedas em \mathbb, \mathcal, \mathfrak & \mathscr
+  scr=boondox,	% 'boondox' é uma fonte cursiva que apoia letras minúsculas
+  cal=esstix	% 'esstix' é uma fonte caligráfica que apoia letras minúsculas a custo de letras em negrito
 ]{mathalpha}
 
 
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                              CUSTOM MATH COMMANDS                               
+%                       COMANDOS MATEMÁTICOS PERSONALIZADOS                       
 %.................................................................................
 % CONSTANTS
-\newcommand{\e}{\mathscr{e}}		 % Special notation for Euler's number
+\newcommand{\e}{\mathscr{e}}		% Notação especial para o algarismo neperiano
 
 % RELATIONS
-\newcommand{\longto}{\longrightarrow}    % Alias to note function domain/codomain (f: A --> B)
+\newcommand{\longto}{\longrightarrow}	% Atalho para a seta longa usada em funções (f: A --> B)
 \newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
 \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
-=}                                       % Compact colon-equals
-\newcommand{\subnormal}{\triangleleft}   % Normal subgroup (left)
-\newcommand{\supnormal}{\triangleright}  % Normal subgroup (right)
+=}					% Símbolo de "definido como" (:=) compacto
+\newcommand{\subnormal}{\triangleleft}	% Subgrupo normal (esquerda)
+\newcommand{\supnormal}{\triangleright}	% Subgrupo normal (direita)
 
 % LOGIC
-\newcommand{\limplies}{\rightarrow}      % Conditional connector
-\newcommand{\liff}{\leftrightarrow}      % Biconditional connector
-\newcommand{\nand}{\uparrow}             % NAND connector
-\newcommand{\nor}{\downarrow}		 % NOR connector
-\newcommand{\xor}{\veebar}		 % XOR connector
+\newcommand{\limplies}{\rightarrow}	% Conectivo condicional
+\newcommand{\liff}{\leftrightarrow}	% Conectivo bicondicional 
+\newcommand{\nand}{\uparrow}		% Conectivo NAND
+\newcommand{\nor}{\downarrow}		% Conectivo NOR
+\newcommand{\xor}{\veebar}		% Conectivo XOR 
 
 
-% LOADED LAST TO AVOID DEPENDENCY ERRORS
+% CARREGAS POR ÚLTIMO PARA EVITAR ERROS DE DEPENDÊNCIA
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                  BIBLIOGRAPHY                                   
-%                                Manage References                                
+%                                  BIBLIOGRAFIA                                   
+%                               Gerencie referências                              
 %.................................................................................
 \usepackage[
-	backend=biber,	% Use Biber backend (more powerful than BibTex)
-	style=ieee,	%
-	sorting=nyt	% 'nyt' stands for name, year, title
+	backend=biber,	% Use Biber no 'backend' (mais poderoso do que BibTex)
+	style=ieee,	% Define o estilo de citação
+	sorting=nyt	% 'nyt' é abreviação de 'name', 'year' e 'title'
 ]{biblatex}
 
 
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%                                  FINALIZATION                                   
-%                 Packages That Patch Others. MUST BE LOADED LAST                 
+%                                   FINALIZAÇÃO                                   
+%           Pacotes que modificam outros. DEVEM SER CARREGAS POR ÚLTIMO           
 %.................................................................................
-\usepackage{hyperref}		% Add hyperlinks to references, ToC and URLs
+\usepackage{hyperref}		% Hiper-links para referências, índice e 'URL's
 \hypersetup{
-	colorlinks=true,	  % true: colored links; false: boxed links
-	allcolors=NavyBlue,	% Set all link types to a single color
+	colorlinks=true,	% true: links coloridos; false: links encaixotados
+	allcolors=NavyBlue,	% Todos tipos de cor com a mesma cor
 }
 
-\newcommand{\customref}[2]{%	% Simple alias for custom link text
+\newcommand{\customref}[2]{%	% Atalho para links com texto personalizado
 	\hyperref[#2]{#1}%
 }
