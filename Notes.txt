@@ -29,8 +29,7 @@
 
 
 -> Video 6 - Pratica 
-- CODY
-- AMANDA
+- IAN
 
 
 -> Video 7 - Representacoes Vetoriais e Paradigma Moderno
@@ -47,7 +46,6 @@
 
 -> Video 10 - Colocando IA em producao
 - IAN
-- CODY
 
 
 
