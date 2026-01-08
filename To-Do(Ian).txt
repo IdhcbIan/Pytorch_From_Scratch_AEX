@@ -1,71 +1,34 @@
 -----------------------------------------------------
 
--> Video 0 - Intro ao Curso (DONE)
-- IAN 
-- AMANDA 
-- CODY
-
-
------------------------------------------------------
-
--> Video 1 - IA do Zero
-- IAN
-
-
------------------------------------------------------
-
--> Video 2 - Revisao de Conceitos
-- CODY
-
-
------------------------------------------------------
-
--> Video 3 - PyTorch Autograd
-- CODY
-
-
------------------------------------------------------
-
--> Video 4 - Arquiteturas
-- IAN (Parte 1)
-- AMANDA (Parte 1)
-
-
------------------------------------------------------
-
--> Video 5 - Mais arquiteturas
-- AMANDA (Introducao a CNNs )
-- CODY (Introducao a RNNs )
-
-
------------------------------------------------------
-
 -> Video 6 - Pratica 
-- IAN
+- Escolher Dataset Kaggle
+- Fazer codigo!!
+- Fazer Slides...
 
 
 -----------------------------------------------------
 
 -> Video 7 - Representacoes Vetoriais e Paradigma Moderno
- 
-  - Preparar Slides
-  - Preparar Codigo Fake Embeddings
-  - Mostrar Exemplo Retrieval DinoV2
+DONE
 
 
 -----------------------------------------------------
 
 -> Video 8 - Modelos Pre-Treinados e Transfer Learning
-- IAN
+- Slides(Hugging face MAP, Baixando pesos, Generalizacao e tranfer Learning)
+- Fazer 2 codigos Hugging face para tranfer learning (whisper e algum LLM)
 
 -----------------------------------------------------
 
 -> Video 9 - Infra-estrutura para IA
-- IAN
+- Falar de Multi GPU. Mostrar como funciona abrir uma instancia e rodar algo ao vivo.
+- Falar do modal para treino, e contar umpouco da infraestrutura usada para
+    treinar os grandes modelos...
 
 -----------------------------------------------------
 
 -> Video 10 - Colocando IA em producao
-- IAN
+- Fazer Modal Deploy de algum modelo(Escolher com CODY)
+- Falar de APIs e Arquiteturas de Chamadas dentro de aplicativos(Integracao)
 
 -----------------------------------------------------
