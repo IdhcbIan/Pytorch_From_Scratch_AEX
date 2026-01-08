@@ -1,0 +1,71 @@
+-----------------------------------------------------
+
+-> Video 0 - Intro ao Curso (DONE)
+- IAN 
+- AMANDA 
+- CODY
+
+
+-----------------------------------------------------
+
+-> Video 1 - IA do Zero
+- IAN
+
+
+-----------------------------------------------------
+
+-> Video 2 - Revisao de Conceitos
+- CODY
+
+
+-----------------------------------------------------
+
+-> Video 3 - PyTorch Autograd
+- CODY
+
+
+-----------------------------------------------------
+
+-> Video 4 - Arquiteturas
+- IAN (Parte 1)
+- AMANDA (Parte 1)
+
+
+-----------------------------------------------------
+
+-> Video 5 - Mais arquiteturas
+- AMANDA (Introducao a CNNs )
+- CODY (Introducao a RNNs )
+
+
+-----------------------------------------------------
+
+-> Video 6 - Pratica 
+- IAN
+
+
+-----------------------------------------------------
+
+-> Video 7 - Representacoes Vetoriais e Paradigma Moderno
+ 
+  - Preparar Slides
+  - Preparar Codigo Fake Embeddings
+  - Mostrar Exemplo Retrieval DinoV2
+
+
+-----------------------------------------------------
+
+-> Video 8 - Modelos Pre-Treinados e Transfer Learning
+- IAN
+
+-----------------------------------------------------
+
+-> Video 9 - Infra-estrutura para IA
+- IAN
+
+-----------------------------------------------------
+
+-> Video 10 - Colocando IA em producao
+- IAN
+
+-----------------------------------------------------
