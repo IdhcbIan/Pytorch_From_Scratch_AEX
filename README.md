@@ -2,7 +2,7 @@
 
 Mini-curso em lingua portuguesa sobre conceitos elementares de aprendizado profundo e implementações em PyTorch (em alto nível) de arquiteturas atuais (2026).
 
-![Alt text](./Documentos/Poster.png)
+![Alt text](./Poster.png)
 
 ## Slides
 * [**Template**](https://www.canva.com/design/DAG-9JaXVSs/_qxpl5GlFT-jcPEezZXKKg/edit)
