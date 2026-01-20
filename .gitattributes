@@ -1,1 +1,1 @@
-*.mp4 filter=lfs diff=lfs merge=lfs -text
+Aulas/Video_01_Introducao/aula01-slides.pdf filter=lfs diff=lfs merge=lfs -text
