@@ -6,8 +6,8 @@
 - CODY
 
 
--> Video 1 - IA do Zero
-- IAN
+-> Video 1 - IA do Zero (DONE)
+- CODY
 
 
 -> Video 2 - Revisao de Conceitos
@@ -19,6 +19,7 @@
 
 
 -> Video 4 - Arquiteturas
+- CODY
 - IAN (Parte 1)
 - AMANDA (Parte 1)
 
@@ -38,6 +39,7 @@
 
 -> Video 8 - Modelos Pre-Treinados e Transfer Learning
 - IAN
+- CODY
 
 
 -> Video 9 - Infra-estrutura para IA
