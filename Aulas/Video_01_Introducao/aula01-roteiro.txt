@@ -1,8 +1,9 @@
 # AULA 1 - INTRODUÇÃO
 # JAN/2026
 
-▀█▀ █▀▀ ▀▄▀ ▀█▀
- █  ██▄ █ █  █
+                          
+█▀█ █▀█ ▀█▀ █▀▀ █ █▀█ █▀█
+█▀▄ █▄█  █  ██▄ █ █▀▄ █▄█
 
 Já na antiguidade grega, as pessoas sonhavam em criar máquinas que pensam. No mito de Pigmaleão, ele se apaixona por uma estátua que esculpe, a qual chama de Galateia, e a deusa Afrodite dá-lhe vida. Há também a figura mitológica "Talos", uma estátua de bronze que supostamente defendia a ilha de Creta.
 
