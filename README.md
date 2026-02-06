@@ -8,13 +8,13 @@ Mini-curso em lingua portuguesa sobre conceitos elementares de aprendizado profu
 * [**Template**](https://www.canva.com/design/DAG-9JaXVSs/_qxpl5GlFT-jcPEezZXKKg/edit)
 * [**Aula 1**](https://www.canva.com/design/DAG-b3J3u60/28_F_8UHTC_aucCw7v2xpA/edit)   
 * [**Aula 2**](https://www.canva.com/design/DAG-9HF7qYc/Nt8mtHhqq7eXPx9vCNvVfA/edit)   
-* **Aula 3**
-* **Aula 4**
+* [**Aula 3**](https://www.canva.com/design/DAHAjkAWAns/2f2kWdl9cMH8zIMfRSQ8DA/edit?utm_content=DAHAjkAWAns&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+* [**Aula 4**](https://www.canva.com/design/DAHAjlHEpRQ/pFNCy544KmOPP__124KwKA/edit?utm_content=DAHAjlHEpRQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 * **Aula 5**
 * **Aula 6**  
 * [**Aula 7**](https://www.canva.com/design/DAG9fDHYAlI/AD4SYNs7pFpeOb1I1u1PwQ/edit?utm_content=DAG9fDHYAlI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)    
-* **Aula 8**    
-* **Aula 9**  
+* [**Aula 8**](https://www.canva.com/design/DAG-NrnFfCE/XRNhiJ_zJV8m06pWkmk8zg/edit?utm_content=DAG-NrnFfCE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)    
+* [**Aula 9**](https://www.canva.com/design/DAHAXV2e7Ck/91cr7Ms2TUw24Ch-Qh8X5w/edit?utm_content=DAHAXV2e7Ck&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 * **Aula 10**
     
 ## Referências
