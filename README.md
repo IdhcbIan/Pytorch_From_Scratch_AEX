@@ -20,5 +20,5 @@ Mini-curso em lingua portuguesa sobre conceitos elementares de aprendizado profu
 * **Goodfellow, I., Bengio, Y., & Courville, A.** (2016). [*Deep Learning*](http://www.deeplearningbook.org). MIT Press.
 * **Amini, A., & Amini, A.** (2025). [*6.S191: Introduction to Deep Learning*](http://introtodeeplearning.com). MIT.
 * **Karpathy, A.** (2022-2024). [*Neural Networks: Zero to Hero*](https://karpathy.ai/zero-to-hero.html) [Video series]. YouTube.
-* **Ramakrishnan, R** (2024). [*MIT 15.773 Hands-On Deep Learning*](https://youtube.com/playlist?list=PLUl4u3cNGP60YyhMjYmXuVmX562QcClSp&si=6NV1Ux7tUsQg3Mpj)
+* **Ramakrishnan, R** (2024). [*MIT 15.773 Hands-On Deep Learning*](https://youtube.com/playlist?list=PLUl4u3cNGP60YyhMjYmXuVmX562QcClSp&si=6NV1Ux7tUsQg3Mpj) YouTube.
 * **Sanderson, G. (3Blue1Brown).** (2017–2025). [*Neural Networks*](https://www.3blue1brown.com/topics/neural-networks) [Video series]. YouTube.
