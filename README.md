@@ -5,7 +5,6 @@ Mini-curso em lingua portuguesa sobre conceitos elementares de aprendizado profu
 ![Alt text](./Poster.png)
 
 ## Slides
-* [**Template**](https://www.canva.com/design/DAG-9JaXVSs/_qxpl5GlFT-jcPEezZXKKg/edit)
 * [**Aula 1**](https://www.canva.com/design/DAG-b3J3u60/28_F_8UHTC_aucCw7v2xpA/edit)   
 * [**Aula 2**](https://www.canva.com/design/DAG-9HF7qYc/Nt8mtHhqq7eXPx9vCNvVfA/edit)   
 * [**Aula 3**](https://www.canva.com/design/DAHAjkAWAns/2f2kWdl9cMH8zIMfRSQ8DA/edit?utm_content=DAHAjkAWAns&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
@@ -21,4 +20,5 @@ Mini-curso em lingua portuguesa sobre conceitos elementares de aprendizado profu
 * **Goodfellow, I., Bengio, Y., & Courville, A.** (2016). [*Deep Learning*](http://www.deeplearningbook.org). MIT Press.
 * **Amini, A., & Amini, A.** (2025). [*6.S191: Introduction to Deep Learning*](http://introtodeeplearning.com). MIT.
 * **Karpathy, A.** (2022-2024). [*Neural Networks: Zero to Hero*](https://karpathy.ai/zero-to-hero.html) [Video series]. YouTube.
+* **Ramakrishnan, R* (2024). [*MIT 15.773 Hands-On Deep Learning*](https://youtube.com/playlist?list=PLUl4u3cNGP60YyhMjYmXuVmX562QcClSp&si=6NV1Ux7tUsQg3Mpj)
 * **Sanderson, G. (3Blue1Brown).** (2017–2025). [*Neural Networks*](https://www.3blue1brown.com/topics/neural-networks) [Video series]. YouTube.

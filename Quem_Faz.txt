@@ -1,12 +1,16 @@
 -----------------------------------------------------
 
--> Video 0 - Intro ao Curso (DONE)
+-> Video 0 - Intro ao Curso (DONE*)
 - IAN 
 - AMANDA 
 - CODY
+*acho que precisamos refazer...
+ enfatizando a importância do preenchimento dos formulários de avaliação
+ e explicando precisamente como o 'curso em tempo real' será ministrado
+- Cody
 
 
--> Video 1 - IA do Zero (DONE)
+-> Video 1 - IA do Zero
 - CODY
 
 
@@ -30,7 +34,7 @@
 - AMANDA
 
 
--> Video 7 - Representacoes Vetoriais e Paradigma Moderno(Tranformer)
+-> Video 7 - Representacoes Vetoriais e Paradigma Moderno (i.e.: Tranformer)
 - IAN
 
 
@@ -44,7 +48,5 @@
 
 -> Video 10 - Colocando IA em producao
 - IAN
-
-
 
 -----------------------------------------------------
