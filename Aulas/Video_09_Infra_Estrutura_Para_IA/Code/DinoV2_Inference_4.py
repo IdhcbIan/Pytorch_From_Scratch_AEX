@@ -23,6 +23,11 @@ import matplotlib.pyplot as plt
 
 --------------------------------
 
+-> Com BatchSize grande + Paralel workers para "criar" o nosso Batch, de disco para VRAM.
+
+--------------------------------
+
+
 -> Este codigo carregamos um ViT(Visual tranformer) chamado DinoV2 que foi pre-treinado pela META
     e extraimos tokens(CLS) para diversas imagens!! Assim, podemos comparar e operar em cima dessas representacoes.
     Neste caso famos fazer um exemplo interativo de Retrieval, onde para cada imagem:
@@ -138,13 +143,14 @@ for i in range(len(image_loader)):
     
     # Carregando o batch atual com DataLoader
     input_batch = next(image_loader_iter)
-    input_batch = input_batch.to(device, non_blocking=True)
+    input_batch = input_batch.to(device)
 
     #Data Loading End
     end_dataLoading = time.perf_counter()
     DataLoading_Times.append(end_dataLoading - start_dataLoading)
 
     #Inference Time Start
+    torch.cuda.synchronize()
     start_inference = time.perf_counter()
 
     with torch.no_grad():
@@ -152,6 +158,7 @@ for i in range(len(image_loader)):
 
 
     #Inference Time Start
+    torch.cuda.synchronize()
     end_inference = time.perf_counter()
     Inference_Times.append(end_inference - start_inference)
         

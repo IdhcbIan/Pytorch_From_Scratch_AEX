@@ -22,7 +22,11 @@ import matplotlib.pyplot as plt
 
 --------------------------------
 
--> Este codigo carregamos um ViT(Visual tranformer) chamado DinoV2 que foi pre-treinado pela META
+-> Fazendo inferencia das imagems uma a uma
+
+--------------------------------
+
+-> Neste codigo carregamos um ViT(Visual tranformer) chamado DinoV2 que foi pre-treinado pela META
     e extraimos tokens(CLS) para diversas imagens!! Assim, podemos comparar e operar em cima dessas representacoes.
     Neste caso famos fazer um exemplo interativo de Retrieval, onde para cada imagem:
 
@@ -110,48 +114,41 @@ Inference_Times = []
 batch_size = 1  # Adjust based on your GPU memory
 all_features = []
 
-for i in range(0, len(image_paths), batch_size):
-    batch_paths = image_paths[i:i+batch_size]
-   
+for img_path in image_paths:
+
     #Data Loading Start
     start_dataLoading = time.perf_counter()
+
+    # Carregando e transformando cada imagem
+    img = Image.open(img_path).convert('RGB')
+    img_tensor = transform(img).unsqueeze(0)
+    img_tensor = img_tensor.to(device)
     
-    # Processando imagens do batch atual
-    input_tensors = []
-    for img_path in batch_paths:
-        # Carregando e transformando cada imagem
-        img = Image.open(img_path).convert('RGB')
-        img_tensor = transform(img)
-        input_tensors.append(img_tensor)
-
-    # Empilhando os tensores do batch atual
-    input_batch = torch.stack(input_tensors)
-    input_batch = input_batch.to(device)
-
     #Data Loading End
     end_dataLoading = time.perf_counter()
     DataLoading_Times.append(end_dataLoading - start_dataLoading)
-
+    
     #Inference Time Start
+    torch.cuda.synchronize()
     start_inference = time.perf_counter()
 
     with torch.no_grad():
-        features = dinov2_vits14(input_batch)
+        feature = dinov2_vits14(img_tensor)
 
-
-    #Inference Time Start
+    #Inference Time Start'
+    torch.cuda.synchronize()
     end_inference = time.perf_counter()
     Inference_Times.append(end_inference - start_inference)
-        
+    
     # Move results to CPU immediately to free GPU memory
-    features = features.cpu().numpy()
-    all_features.append(features)
+    feature = feature.cpu().numpy()
+    all_features.append(feature)
     
     # Clear some memory
-    del input_batch, features
+    del img_tensor, feature
     torch.cuda.empty_cache()
 
-features_batch = np.vstack(all_features)
+features = np.vstack(all_features)
 
 
 # End the timer

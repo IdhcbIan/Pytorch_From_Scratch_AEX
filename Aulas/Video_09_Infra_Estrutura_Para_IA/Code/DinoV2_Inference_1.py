@@ -22,7 +22,11 @@ import matplotlib.pyplot as plt
 
 --------------------------------
 
--> Este codigo carregamos um ViT(Visual tranformer) chamado DinoV2 que foi pre-treinado pela META
+-> Sem Batch, todos os dados direto em GPU!!
+
+--------------------------------
+
+-> Neste codigo carregamos um ViT(Visual tranformer) chamado DinoV2 que foi pre-treinado pela META
     e extraimos tokens(CLS) para diversas imagens!! Assim, podemos comparar e operar em cima dessas representacoes.
     Neste caso famos fazer um exemplo interativo de Retrieval, onde para cada imagem:
 
@@ -112,6 +116,7 @@ Inference_Times = []
 # Processando imagens do batch atual
 start_dataLoading = time.perf_counter()
 input_tensors = []
+
 for img_path in image_paths:
     # Carregando e transformando cada imagem
     img = Image.open(img_path).convert('RGB')
@@ -122,6 +127,7 @@ for img_path in image_paths:
 input_batch = torch.stack(input_tensors)
 input_batch = input_batch.to(device)
 end_dataLoading = time.perf_counter()
+
 DataLoading_Times.append(end_dataLoading - start_dataLoading)
 
 start_inference = time.perf_counter()
