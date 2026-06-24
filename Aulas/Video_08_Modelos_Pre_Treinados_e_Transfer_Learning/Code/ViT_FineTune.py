@@ -4,7 +4,6 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 from PIL import Image
-from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 import torchvision.models as models
 
@@ -31,52 +30,53 @@ import torchvision.models as models
 ############// Configuracao //#####################################
 
 
-imgs_path = '../imgs'
+script_dir = os.path.dirname(os.path.abspath(__file__))
+imgs_path = os.path.join(script_dir, '..', 'imgs')
+train_path = os.path.join(imgs_path, 'Train')
+test_path = os.path.join(imgs_path, 'Test')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Hiperparametros
-EPOCHS = 10
-BATCH_SIZE = 16
-LEARNING_RATE = 1e-4
-TEMPERATURE = 0.5
+
+EPOCHS = 10    # Numero de epocas do codigo
+BATCH_SIZE = 16     # Tamanho do nosso batch de imagens por foward-backward
+LEARNING_RATE = 1e-4     # Passo do Optimizer
 
 
 ############// Dataset //#####################################
 
 
-class BirdDataset(Dataset):
-    def __init__(self, imgs_path, transform):
-        self.image_paths = []
-        self.labels = []
-        self.transform = transform
-        self.class_names = []
+def collect_images(split_path):
+    image_paths = []
+    labels = []
+    class_names = []
 
-        for class_folder in sorted(os.listdir(imgs_path)):
-            class_path = os.path.join(imgs_path, class_folder)
-            if not os.path.isdir(class_path):
+    for class_folder in sorted(os.listdir(split_path)):
+        class_path = os.path.join(split_path, class_folder)
+        if not os.path.isdir(class_path):
+            continue
+
+        class_names.append(class_folder)
+        class_idx = len(class_names) - 1
+
+        for img_name in os.listdir(class_path):
+            if not img_name.lower().endswith('.jpg'):
                 continue
 
-            self.class_names.append(class_folder)
-            class_idx = len(self.class_names) - 1
+            img_path = os.path.join(class_path, img_name)
+            image_paths.append(img_path)
+            labels.append(class_idx)
 
-            for img_name in os.listdir(class_path):
-                if not img_name.lower().endswith('.jpg'):
-                    continue
+    labels = np.array(labels)
+    return image_paths, labels, class_names
 
-                img_path = os.path.join(class_path, img_name)
-                self.image_paths.append(img_path)
-                self.labels.append(class_idx)
 
-        self.labels = np.array(self.labels)
+print("\nCarregando dataset de treino...")
+image_paths, labels, class_names = collect_images(train_path)
 
-    def __len__(self):
-        return len(self.image_paths)
+print(f"Total de imagens: {len(image_paths)}")
+print(f"Classes: {len(class_names)}")
 
-    def __getitem__(self, idx):
-        img = Image.open(self.image_paths[idx]).convert('RGB')
-        img = self.transform(img)
-        label = self.labels[idx]
-        return img, label
 
 
 ############// ViT Feature Extractor //#####################################
@@ -85,112 +85,124 @@ class BirdDataset(Dataset):
 class ViTEmbedder(nn.Module):
     """ViT que retorna embeddings ao inves de classificacao"""
     def __init__(self):
+        
         super().__init__()
+        
         # Carrega ViT-B/16 pre-treinado no ImageNet
         self.vit = models.vit_b_16(weights=models.ViT_B_16_Weights.IMAGENET1K_V1)
-        # Remove a cabeca de classificacao
+        
+        # Remove as macadas de classificacao do ViT
         self.vit.heads = nn.Identity()
 
     def forward(self, x):
-        return self.vit(x)
+        return self.vit(x)   
 
 
-############// Loss de Atracao Positiva //#####################################
-
+############// Funcao objetivo (Loss) //#####################################
 
 class PositiveAttractionLoss(nn.Module):
     """
-    Loss que atrai embeddings de imagens da mesma classe.
-    Usa cosine similarity com margem suave.
+    Loss que atrai embeddings da mesma classe e distancia embeddings de classes diferentes.
     """
-    def __init__(self, temperature=0.5):
-        super().__init__()
-        self.temperature = temperature
 
-    def forward(self, embeddings, labels):
-        # Normaliza embeddings
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, embeddings, labels):    # Recebemos input e output e queremos calcular o quao longe estamos...
+
+        # Normalizamos os embeddings para que o produto interno entre dois
+        # vetores seja igual a cosine similarity.
         embeddings = nn.functional.normalize(embeddings, dim=1)
 
-        # Matriz de similaridade
-        sim_matrix = torch.mm(embeddings, embeddings.t()) / self.temperature
+        losses = []
+        batch_size = embeddings.shape[0]
 
-        # Mascara de pares positivos (mesma classe, excluindo diagonal)
-        labels = labels.view(-1, 1)
-        positive_mask = (labels == labels.t()).float()
-        positive_mask.fill_diagonal_(0)
+        for i in range(batch_size):
+            for j in range(i + 1, batch_size):   # Passamos sobre i,j em cima de todos os pares.
+                
+                if labels[i] == labels[j]:     # Para as imagens que sao da mesma classe dentro do nosso batch
 
-        # Conta pares positivos por amostra
-        num_positives = positive_mask.sum(dim=1)
+                    cosine_similarity = torch.dot(embeddings[i], embeddings[j])   
+                   
+                    # Similaridade cos vai de [-1,1], queremos que ela fique o
+                    # mais perto de 1 possivel. Portanto, minimizamos
+                    # 1 - sim_cos: quanto mais perto de 1, menor a loss fica.
+                    
+                    cosine_distance = 1.0 - cosine_similarity   
+                    
+                    losses.append(cosine_distance)
+                else:
+                    cosine_similarity = torch.dot(embeddings[i], embeddings[j])   
+                   
+                    # Similaridade cos vai de [-1,1], desta vez queremos que ela fique o
+                    # mais distante de 1 possivel. Portanto, minimizamos
+                    # sim_cos: quanto mais perto de 0, menor a loss fica.
+                    
+                    # Usamos Relu para ignorar casos onde a similaridade coseno eh menor que 0
 
-        # Se nao ha pares positivos, retorna 0
-        if positive_mask.sum() == 0:
+                    cosine_distance = torch.relu(cosine_similarity - 0.3)     # O.3 de margem
+                    
+                    losses.append(cosine_distance)
+
+
+        # Se o batch nao tiver nenhum par da mesma classe, nao ha loss.  
+        if len(losses) == 0:
             return torch.tensor(0.0, device=embeddings.device, requires_grad=True)
 
-        # Mascara para todas as amostras exceto si mesmo
-        all_mask = torch.ones_like(sim_matrix)
-        all_mask.fill_diagonal_(0)
+        return torch.stack(losses).mean()   # Nossa loss final eh a media da distancia_cosseno dos pares da mesma classe para aquele batch.
 
-        # Log-sum-exp para estabilidade numerica
-        max_sim = sim_matrix.max(dim=1, keepdim=True)[0].detach()
-        exp_sim = torch.exp(sim_matrix - max_sim) * all_mask
-
-        # Denominador: soma de todas as similaridades
-        log_sum_exp = max_sim.squeeze() + torch.log(exp_sim.sum(dim=1) + 1e-8)
-
-        # Numerador: media das similaridades positivas
-        positive_sim_sum = (sim_matrix * positive_mask).sum(dim=1)
-        mean_positive_sim = positive_sim_sum / (num_positives + 1e-8)
-
-        # Loss: -log(exp(sim_pos) / sum(exp(sim_all)))
-        loss = log_sum_exp - mean_positive_sim
-
-        # Apenas amostras com pares positivos
-        valid_mask = num_positives > 0
-        if valid_mask.sum() == 0:
-            return torch.tensor(0.0, device=embeddings.device, requires_grad=True)
-
-        return loss[valid_mask].mean()
 
 
 ############// Carregando ViT //#####################################
 
 
 print("Carregando ViT-B/16 (ImageNet)...")
+
 torch.cuda.empty_cache()
-model = ViTEmbedder()
+
+model = ViTEmbedder()    # Usamos apenas um ViT nao DinoV2 como na aula 7.
+
 model.to(device)
 model.train()
 
 print(f"Embedding dimension: 768")
 
+
+# Nomalizacao padrao ImageNet
+
 transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
-    transforms.RandomHorizontalFlip(),
-    transforms.ColorJitter(brightness=0.2, contrast=0.2),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                         std=[0.229, 0.224, 0.225])
 ])
 
 
-############// Preparando dados //#####################################
+############// Definindo parametros de treinamento //#####################################
+
+"""
+Fora a arquitetura do modelo, essas sao as coisas mais importantes de um pipeline de treinamento.
+
+Primeiro, nossa funcao objetivo, nossa loss.
+
+Segundo, nosso optimizer, navegamos nossa funcao objetico, 
+    buscando os parametros do modelo que minimizam a nossa loss
+
+Terceiro, nosso scheduler, como vamos reduzir nosso tamanho de passo, para que 
+      a loss consiga convergir de forma mais suave. 
+"""
 
 
-print("\nCarregando dataset...")
-dataset = BirdDataset(imgs_path, transform)
-dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=2)
+criterion = PositiveAttractionLoss()
 
-print(f"Total de imagens: {len(dataset)}")
-print(f"Classes: {dataset.class_names}")
+optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=0.01)
+
+scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)
 
 
 ############// Training //#####################################
 
-
-criterion = PositiveAttractionLoss(temperature=TEMPERATURE)
-optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=0.01)
-scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)
 
 print("\n" + "="*60)
 print("  INICIANDO FINE-TUNING")
@@ -198,38 +210,57 @@ print("="*60)
 print(f"  Epochs: {EPOCHS}")
 print(f"  Batch size: {BATCH_SIZE}")
 print(f"  Learning rate: {LEARNING_RATE}")
-print(f"  Temperature: {TEMPERATURE}")
 print("="*60 + "\n")
 
+
 for epoch in range(EPOCHS):
+    
     epoch_loss = 0.0
     num_batches = 0
+    
+    shuffled_indices = np.random.permutation(len(image_paths))
+    total_batches = (len(image_paths) + BATCH_SIZE - 1) // BATCH_SIZE
 
-    for batch_idx, (images, labels) in enumerate(dataloader):
-        images = images.to(device)
-        labels = labels.to(device)
+    for batch_idx in range(total_batches):
+        
+        start = batch_idx * BATCH_SIZE
+        end = start + BATCH_SIZE
+        batch_indices = shuffled_indices[start:end]
 
-        optimizer.zero_grad()
+        batch_images = []
+        batch_labels = []
+
+        # Fazendo o Preprocessamento do batch. 
+        for idx in batch_indices:
+            img = Image.open(image_paths[idx]).convert('RGB')
+            img = transform(img)
+            batch_images.append(img)
+            batch_labels.append(labels[idx])
+
+        
+        images = torch.stack(batch_images).to(device)
+        batch_labels = torch.tensor(batch_labels, device=device)   # Temos nossas imagens em tensores.
+
+        optimizer.zero_grad()    # Em preparacao para o backwardpass
 
         # Forward
-        embeddings = model(images)
+        embeddings = model(images)    # Foward Pass!!
 
         # Loss
-        loss = criterion(embeddings, labels)
+        loss = criterion(embeddings, batch_labels)    # Cauculamos a Loss!!
 
         # Backward
-        if not torch.isnan(loss):
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-            optimizer.step()
+        loss.backward()   # Cauculamos a o gradiente pelo grafo computacional, backpropagation.
+        optimizer.step()     # Optimizer zero_grad
 
         epoch_loss += loss.item() if not torch.isnan(loss) else 0
         num_batches += 1
 
         if batch_idx % 5 == 0:
-            print(f"  Epoch {epoch+1}/{EPOCHS} | Batch {batch_idx}/{len(dataloader)} | Loss: {loss.item():.4f}")
+            print(f"  Epoch {epoch+1}/{EPOCHS} | Batch {batch_idx}/{total_batches} | Loss: {loss.item():.4f}")
 
-    scheduler.step()
+        scheduler.step()    # Scheduler step para reduzir o lr do optimizer. (Diminuir o tamanho do passo)
+    
     avg_loss = epoch_loss / num_batches
     print(f"\n>>> Epoch {epoch+1}/{EPOCHS} finalizada | Loss medio: {avg_loss:.4f}\n")
 
@@ -249,42 +280,36 @@ print("\n" + "="*60)
 print("  AVALIANDO MODELO FINE-TUNED")
 print("="*60)
 
-# Transform sem augmentation para avaliacao
-eval_transform = transforms.Compose([
-    transforms.Resize(256),
-    transforms.CenterCrop(224),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                        std=[0.229, 0.224, 0.225])
-])
 
-# Coleta imagens e labels
-print("\nExtraindo features para avaliacao...")
+# Carrega imagens do conjunto de teste
+print("\nCarregando dataset de teste...")
 model.eval()
 
-image_paths = []
-eval_labels = []
+test_image_paths, eval_labels, test_class_names = collect_images(test_path)
+print(f"Total de imagens de teste: {len(test_image_paths)}")
+print(f"Classes de teste: {len(test_class_names)}")
 
-for class_idx, class_name in enumerate(dataset.class_names):
-    class_path = os.path.join(imgs_path, class_name)
-    for img_name in os.listdir(class_path):
-        if img_name.lower().endswith('.jpg'):
-            image_paths.append(os.path.join(class_path, img_name))
-            eval_labels.append(class_idx)
+if len(test_image_paths) == 0:
+    raise RuntimeError("Nenhuma imagem em imgs/Test. Rode Code/Make_Test_Split.py primeiro.")
 
-eval_labels = np.array(eval_labels)
+print("\nExtraindo features para avaliacao...")
 
-# Extrai features
+
+
+# Extrai features (Do split de teste)
+
 all_features = []
 batch_size = 32
 
-for i in range(0, len(image_paths), batch_size):
-    batch_paths = image_paths[i:i+batch_size]
+for i in range(0, len(test_image_paths), batch_size):
+    
+    batch_paths = test_image_paths[i:i+batch_size]
     input_tensors = []
 
     for img_path in batch_paths:
+        
         img = Image.open(img_path).convert('RGB')
-        img_tensor = eval_transform(img)
+        img_tensor = transform(img)
         input_tensors.append(img_tensor)
 
     input_batch = torch.stack(input_tensors).to(device)
@@ -296,53 +321,65 @@ for i in range(0, len(image_paths), batch_size):
     del input_batch, features
     torch.cuda.empty_cache()
 
-features = np.vstack(all_features)
+
+# Temos agora uma nossa lista de features igual na ultima aula!! 
+#       No entanto, esta inferencia foi feita com a versao treinada do nosso modelo
+
+features = np.vstack(all_features)   
 
 
-# Funcoes de avaliacao
-def cosine_similarity_matrix(features):
-    norms = np.linalg.norm(features, axis=1, keepdims=True)
-    normalized = features / norms
-    return np.dot(normalized, normalized.T)
+
+from Aux_Recall import compute_recall_at_k
+from Aux_Recall import cosine_similarity_matrix
 
 
-def compute_recall_at_k(sim_matrix, labels, k):
-    n = len(labels)
-    hits = 0
-    for i in range(n):
-        sims = sim_matrix[i].copy()
-        sims[i] = -np.inf
-        top_k_idx = np.argsort(sims)[::-1][:k]
-        if labels[i] in labels[top_k_idx]:
-            hits += 1
-    return hits / n
 
 
 # Calcula metricas
 sim_matrix = cosine_similarity_matrix(features)
 
+
+
 print("\n" + "="*60)
 print("  RESULTADOS - RECALL@K (FINE-TUNED)")
 print("="*60)
 
+
+
+
 for k in [1, 2, 5]:
+    
     recall = compute_recall_at_k(sim_matrix, eval_labels, k)
     print(f"  Recall@{k}: {recall:.4f} ({recall*100:.2f}%)")
 
 print("="*60)
 
+
+
+
+
 # Recall por classe
 print("\n  RECALL@1 POR CLASSE:")
-for class_idx, class_name in enumerate(dataset.class_names):
+
+# Classificando
+
+for class_idx, class_name in enumerate(test_class_names):
+    
     class_indices = np.where(eval_labels == class_idx)[0]
     hits = 0
+    
     for i in class_indices:
+        
         sims = sim_matrix[i].copy()
         sims[i] = -np.inf
+        
         if eval_labels[np.argmax(sims)] == class_idx:
             hits += 1
+    
     recall = hits / len(class_indices)
     print(f"    {class_name}: {recall:.4f} ({recall*100:.2f}%)")
+
+
 
 print("="*60)
 print("\n  FINE-TUNING COMPLETO!")

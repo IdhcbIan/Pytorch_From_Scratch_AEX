@@ -28,7 +28,8 @@ import torchvision.models as models
 ############// Configuracao //#####################################
 
 
-imgs_path = '../imgs'
+script_dir = os.path.dirname(os.path.abspath(__file__))
+imgs_path = os.path.join(script_dir, '..', 'imgs', 'Test')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Caminho para modelo fine-tuned (None para usar pre-treinado)
@@ -76,6 +77,9 @@ labels = np.array(labels)
 print(f"Total de imagens: {len(image_paths)}")
 print(f"Classes: {class_names}")
 print(f"Imagens por classe: {[np.sum(labels == i) for i in range(len(class_names))]}")
+
+if len(image_paths) == 0:
+    raise RuntimeError("Nenhuma imagem em imgs/Test. Rode Code/Make_Test_Split.py primeiro.")
 
 
 ############// Carregando ViT //#####################################
