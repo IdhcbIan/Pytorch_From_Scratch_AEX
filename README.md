@@ -2,7 +2,7 @@
 
 Este repositório contém todo material didático relativo a [Desmistificando a IA: Pytorch do Zero](https://pytorch-do-zero.web.app/), uma atividade de extensão ensinando sobre *redes neurais*, a arquitetura de IA por trás dos *LLM*'s, de carros autônomos, dentre várias outras tecnologias, atravessando seus fundamentos teóricos, implementações em código Python e como aplicá-las em produção.
 
-A atividade foi desenvolvido em 2026 por estudantes de graduação do ICMC-USP, em São Carlos, dos cursos de Matemática Aplicada e de Estatística, sob orientação do Prof. Dr. Lucas Valem, do Depto. de Ciência da Computação.
+A atividade foi desenvolvido em 2026 por estudantes de graduação do [ICMC-USP](https://www.icmc.usp.br/), em São Carlos, dos cursos de Matemática Aplicada e de Estatística, sob orientação do Prof. Dr. Lucas Valem, do Depto. de Ciência da Computação.
 
 ## Videoaulas
 [<img src="recursos/dipz-thumbnail.png" width="500">](https://www.youtube.com/playlist?list=PLLCPgCttg8xA)
