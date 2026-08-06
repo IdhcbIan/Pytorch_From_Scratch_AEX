@@ -6,6 +6,7 @@ A atividade foi desenvolvido em 2026 por estudantes de graduação do ICMC-USP, 
 
 ## Videoaulas
 [<img src="recursos/dipz-thumbnail.png" width="500">](https://www.youtube.com/playlist?list=PLLCPgCttg8xA)
+
 Todas as aulas estão disponíveis publicamente. Clique no link acima para vê-las!
 
 ## Códigos
