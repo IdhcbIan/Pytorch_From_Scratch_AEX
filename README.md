@@ -1,24 +1,43 @@
-# PyTorch do Zero 🧗
+[![cabeçalho](recursos/dipz-cabecalho.png)](https://pytorch-do-zero.web.app/)
 
-Mini-curso em lingua portuguesa sobre conceitos elementares de aprendizado profundo e implementações em PyTorch (em alto nível) de arquiteturas atuais (2026).
+Este repositório contém todo material didático relativo a [Desmistificando a IA: Pytorch do Zero](https://pytorch-do-zero.web.app/), uma atividade de extensão ensinando sobre *redes neurais*, a arquitetura de IA por trás dos *LLM*'s, de carros autônomos, dentre várias outras tecnologias, atravessando seus fundamentos teóricos, implementações em código Python e como aplicá-las em produção.
 
-![Alt text](./Poster.png)
+A atividade foi desenvolvido em 2026 por estudantes de graduação do ICMC-USP, em São Carlos, dos cursos de Matemática Aplicada e de Estatística, sob orientação do Prof. Dr. Lucas Valem, do Depto. de Ciência da Computação.
+
+## Videoaulas
+[<img src="recursos/dipz-thumbnail.png" width="500">](https://www.youtube.com/playlist?list=PLLCPgCttg8xA)
+Todas as aulas estão disponíveis publicamente. Clique no link acima para vê-las!
+
+## Códigos
+Vide o diretório [`recursos/codigos/`](recursos/codigos/).
 
 ## Slides
-* [**Aula 1**](https://www.canva.com/design/DAG-b3J3u60/28_F_8UHTC_aucCw7v2xpA/edit)   
-* [**Aula 2**](https://www.canva.com/design/DAG-9HF7qYc/Nt8mtHhqq7eXPx9vCNvVfA/edit)   
-* [**Aula 3**](https://www.canva.com/design/DAHAjkAWAns/2f2kWdl9cMH8zIMfRSQ8DA/edit?utm_content=DAHAjkAWAns&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-* [**Aula 4**](https://www.canva.com/design/DAHAjlHEpRQ/pFNCy544KmOPP__124KwKA/edit?utm_content=DAHAjlHEpRQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-* **Aula 5**
-* **Aula 6**  
-* [**Aula 7**](https://www.canva.com/design/DAG9fDHYAlI/AD4SYNs7pFpeOb1I1u1PwQ/edit?utm_content=DAG9fDHYAlI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)    
-* [**Aula 8**](https://www.canva.com/design/DAG-NrnFfCE/XRNhiJ_zJV8m06pWkmk8zg/edit?utm_content=DAG-NrnFfCE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)    
-* [**Aula 9**](https://www.canva.com/design/DAHAXV2e7Ck/91cr7Ms2TUw24Ch-Qh8X5w/edit?utm_content=DAHAXV2e7Ck&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-* **Aula 10**
+<table>
+  <tr>
+    <td valign="top">
+      <ul>
+        <li><a href="https://canva.link/0ols5sd8jy7dh3c"><b>Aula 1</b></a></li>
+        <li><a href="https://canva.link/5cwcnwhnqhls9ns"><b>Aula 2</b></a></li>
+        <li><a href="https://canva.link/5piji323eo2xbp2"><b>Aula 3</b></a></li>
+        <li><a href="https://canva.link/t0cugc8cbn7keax"><b>Aula 4</b></a></li>
+        <li><b>Aula 5</b></li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li><b>Aula 6</b></li>
+        <li><a href="https://canva.link/zvmrotduqvspgd7"><b>Aula 7</b></a></li>
+        <li><a href="https://canva.link/w3z8exnr0hvntrx"><b>Aula 8</b></a></li>
+        <li><a href="https://canva.link/yxbcse77dkajrnt"><b>Aula 9</b></a></li>
+        <li><b>Aula 10</b></li>
+      </ul>
+    </td>
+  </tr>
+</table>
     
 ## Referências
-* **Goodfellow, I., Bengio, Y., & Courville, A.** (2016). [*Deep Learning*](http://www.deeplearningbook.org). MIT Press.
-* **Amini, A., & Amini, A.** (2025). [*6.S191: Introduction to Deep Learning*](http://introtodeeplearning.com). MIT.
-* **Karpathy, A.** (2022-2024). [*Neural Networks: Zero to Hero*](https://karpathy.ai/zero-to-hero.html) [Video series]. YouTube.
-* **Ramakrishnan, R.** (2024). [*MIT 15.773 Hands-On Deep Learning*](https://youtube.com/playlist?list=PLUl4u3cNGP60YyhMjYmXuVmX562QcClSp&si=6NV1Ux7tUsQg3Mpj) YouTube.
-* **Sanderson, G. (3Blue1Brown)** (2017–2025). [*Neural Networks*](https://www.3blue1brown.com/topics/neural-networks) [Video series]. YouTube.
+* **Amini & Amini** (2025). [*6.S191: Introduction to Deep Learning*](http://introtodeeplearning.com). MIT.
+* **Goodfellow, Bengio & Courville** (2016). [*Deep Learning*](http://www.deeplearningbook.org). MIT Press.
+* **Karpathy** (2022-2024). [*Neural Networks: Zero to Hero*](https://karpathy.ai/zero-to-hero.html) [Video series]. YouTube.
+* **Ramakrishnan** (2024). [*MIT 15.773 Hands-On Deep Learning*](https://youtube.com/playlist?list=PLUl4u3cNGP60YyhMjYmXuVmX562QcClSp&si=6NV1Ux7tUsQg3Mpj) YouTube.
+* **Sanderson (3Blue1Brown)** (2017–2025). [*Neural Networks*](https://www.3blue1brown.com/topics/neural-networks) [Video series]. YouTube.
