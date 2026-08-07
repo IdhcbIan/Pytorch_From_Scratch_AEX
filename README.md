@@ -19,16 +19,28 @@ Vide o diretório [`recursos/codigos/`](recursos/codigos/).
       <ul>
         <li><a href="https://canva.link/0ols5sd8jy7dh3c"><b>Aula 1</b></a></li>
         <li><a href="https://canva.link/5cwcnwhnqhls9ns"><b>Aula 2</b></a></li>
-        <li><a href="https://canva.link/5piji323eo2xbp2"><b>Aula 3</b></a></li>
-        <li><a href="https://canva.link/t0cugc8cbn7keax"><b>Aula 4</b></a></li>
-        <li><b>Aula 5</b></li>
       </ul>
     </td>
     <td valign="top">
       <ul>
+        <li><a href="https://canva.link/5piji323eo2xbp2"><b>Aula 3</b></a></li>
+        <li><a href="https://canva.link/t0cugc8cbn7keax"><b>Aula 4</b></a></li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li><b>Aula 5</b></li>
         <li><b>Aula 6</b></li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
         <li><a href="https://canva.link/zvmrotduqvspgd7"><b>Aula 7</b></a></li>
         <li><a href="https://canva.link/w3z8exnr0hvntrx"><b>Aula 8</b></a></li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
         <li><a href="https://canva.link/yxbcse77dkajrnt"><b>Aula 9</b></a></li>
         <li><b>Aula 10</b></li>
       </ul>
