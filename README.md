@@ -1,11 +1,11 @@
-[![cabeçalho](recursos/dipz-cabecalho.png)](https://pytorch-do-zero.web.app/)
+[![cabeçalho](admin/artes/cabecalhos/dipz-cabecalho.png)](https://pytorch-do-zero.web.app/)
 
 Este repositório contém todo material didático relativo a [Desmistificando a IA: Pytorch do Zero](https://pytorch-do-zero.web.app/), uma atividade de extensão ensinando sobre *redes neurais*, a arquitetura de IA por trás dos *LLM*'s, de carros autônomos, dentre várias outras tecnologias, atravessando seus fundamentos teóricos, implementações em código Python e como aplicá-las em produção.
 
 A atividade foi desenvolvido em 2026 por estudantes de graduação do [ICMC-USP](https://www.icmc.usp.br/), em São Carlos, dos cursos de Matemática Aplicada e de Estatística, sob orientação do Prof. Dr. Lucas Valem, do Depto. de Ciência da Computação.
 
 ## Videoaulas
-[<img src="recursos/dipz-thumbnail.png" width="500">](https://www.youtube.com/playlist?list=PLLCPgCttg8xA)
+[<img src="admin/artes/thumbnails/dipz-youtube.png" width="500">](https://www.youtube.com/playlist?list=PLLCPgCttg8xA)
 
 Todas as aulas estão disponíveis publicamente. Clique no link acima para vê-las!
 
