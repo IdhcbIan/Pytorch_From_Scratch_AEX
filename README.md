@@ -18,7 +18,7 @@ Vide o diretório [`recursos/codigos/`](recursos/codigos/).
     <td valign="top">
       <ul>
         <li><a href="https://canva.link/0ols5sd8jy7dh3c"><b>Aula 1</b></a></li>
-        <li><a href="https://canva.link/5cwcnwhnqhls9ns"><b>Aula 2</b></a></li>
+        <li><a href="https://canva.link/turgvzdkv34by8q"><b>Aula 2</b></a></li>
       </ul>
     </td>
     <td valign="top">
