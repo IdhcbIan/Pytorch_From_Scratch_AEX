@@ -6,6 +6,9 @@ from PIL import Image
 from torchvision import transforms
 import torchvision.models as models
 
+
+from ViT_Embedder import ViTEmbedder
+
 """
 
 ██╗░░░██╗██╗████████╗  ██████╗░███████╗░█████╗░░█████╗░██╗░░░░░██╗░░░░░
@@ -32,21 +35,10 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 imgs_path = os.path.join(script_dir, '..', 'imgs', 'Test')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Caminho para modelo fine-tuned (None para usar pre-treinado)
-FINETUNED_PATH = None  # ou "vit_finetuned.pth"
-
 
 ############// ViT Feature Extractor //#####################################
 
 
-class ViTEmbedder(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.vit = models.vit_b_16(weights=models.ViT_B_16_Weights.IMAGENET1K_V1)
-        self.vit.heads = nn.Identity()
-
-    def forward(self, x):
-        return self.vit(x)
 
 
 ############// Coletando imagens e labels //#####################################
@@ -58,6 +50,7 @@ labels = []
 class_names = []
 
 for class_folder in sorted(os.listdir(imgs_path)):
+    
     class_path = os.path.join(imgs_path, class_folder)
     if not os.path.isdir(class_path):
         continue
@@ -85,15 +78,9 @@ if len(image_paths) == 0:
 ############// Carregando ViT //#####################################
 
 
-print("\nCarregando ViT-B/16...")
+print("\nUsando ViT PreTreinado ViT-B/16...")
 torch.cuda.empty_cache()
 model = ViTEmbedder()
-
-if FINETUNED_PATH and os.path.exists(FINETUNED_PATH):
-    print(f"Carregando pesos fine-tuned de: {FINETUNED_PATH}")
-    model.load_state_dict(torch.load(FINETUNED_PATH))
-else:
-    print("Usando pesos pre-treinados (ImageNet)")
 
 model.to(device)
 model.eval()
@@ -136,7 +123,7 @@ for i in range(0, len(image_paths), batch_size):
 
     print(f"  Processado: {min(i + batch_size, len(image_paths))}/{len(image_paths)}")
 
-features = np.vstack(all_features)
+features = np.vstack(all_features)    # Stack vertically
 print(f"Features shape: {features.shape}")
 
 
@@ -177,7 +164,7 @@ print("\n" + "="*60)
 print("  RESULTADOS - RECALL@K (ViT)")
 print("="*60)
 
-for k in [1, 2, 5]:
+for k in [1, 2, 3]:
     recall = compute_recall_at_k(sim_matrix, labels, k)
     print(f"  Recall@{k}: {recall:.4f} ({recall*100:.2f}%)")
 
@@ -208,3 +195,6 @@ for class_idx, class_name in enumerate(class_names):
     print(f"  {class_name}: {recall:.4f} ({recall*100:.2f}%)")
 
 print("="*60)
+
+
+
