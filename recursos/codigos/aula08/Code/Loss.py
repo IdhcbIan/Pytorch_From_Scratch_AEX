@@ -40,20 +40,17 @@ class PositiveAttractionLoss(nn.Module):
                     # mais perto de 1 possivel. Portanto, minimizamos
                     # 1 - sim_cos: quanto mais perto de 1, menor a loss fica.
                     
-                    cosine_distance = 1.0 - cosine_similarity   
+                    pos = 1.0 - cosine_similarity   
                     
-                    losses.append(cosine_distance)
+                    losses.append(pos)
                 else:
                    
                     # Similaridade cos vai de [-1,1], desta vez queremos que ela fique o
-                    # mais distante de 1 possivel. Portanto, minimizamos
-                    # sim_cos: quanto mais perto de 0, menor a loss fica.
+                    # mais distante de 1 possivel. Portanto, minimizamos 1 + cosine_similarity
                     
-                    # Usamos Relu para ignorar casos onde a similaridade coseno eh menor que 0, relu equivale a max(x, 0)
-
-                    cosine_distance = torch.relu(cosine_similarity)     
+                    neg = 1.0 + cosine_similarity
                     
-                    losses.append(cosine_distance)
+                    losses.append(neg)
 
 
         # Se o batch nao tiver nenhum par da mesma classe, nao ha loss.  
