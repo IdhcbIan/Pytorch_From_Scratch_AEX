@@ -29,8 +29,6 @@ https://www.canva.com/design/DAHRX7HwnLE/ZKSWdjP-N18ufoDYEM6yDQ/edit
 # Formulários
 Inscri.: https://docs.google.com/forms/d/1w4A_Zv51_zxGAO3K6bf8yYs7PMQ5JtbkqggQs21vhxI/edit
 
-Dúvidas: https://docs.google.com/forms/d/1m1E5kyg8gZ93tJZowYZ3D72fNKqCkmHJJdT4uNf85GE/edit
-
 ## Avaliação dos Participantes
 Aula  1: https://docs.google.com/forms/d/1jHEa30o77Bn02UNPS4_1I6jV8y_i9OSzlQkp_vE1eiw/edit
 
