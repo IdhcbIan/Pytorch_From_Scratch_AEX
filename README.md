@@ -29,8 +29,8 @@ Vide o diretório [`recursos/codigos/`](recursos/codigos/).
     </td>
     <td valign="top">
       <ul>
-        <li><a href="https://canva.link/ej59fubfshzfj5u"><b>Aula 5</b></a>/li>
-        <li><a href="https://canva.link/fcvpt7wlazkr1ar"><b>Aula 6</b></a>/li>
+        <li><a href="https://canva.link/ej59fubfshzfj5u"><b>Aula 5</b></a><li>
+        <li><a href="https://canva.link/fcvpt7wlazkr1ar"><b>Aula 6</b></a><li>
       </ul>
     </td>
     <td valign="top">
